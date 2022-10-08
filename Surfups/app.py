@@ -1,5 +1,5 @@
 import numpy as np
-
+import pandas as pd 
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -10,16 +10,19 @@ from flask import Flask, jsonify
 import datetime as dt
 
 # Database Setup
-engine = create_engine("sqlite:///hawaii.sqlite")
+engine = create_engine("sqlite:///Resources/hawaii.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
 
 Base.prepare(engine, reflect=True)
+print(Base.classes.keys())
 
 # Save reference to the table
 Measurement= Base.classes.measurement
 Station = Base.classes.station
+
+session = Session(engine)
 
 app = Flask(__name__)
 
@@ -33,13 +36,13 @@ active_station_id= 'USC00519281'
 @app.route("/")
 def welcome():
     
-    return (f"Welcome to my API!"
+    return (f"Welcome to Climate API!"
         f"Available Routes:<br/>"
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/<start><br/>"
-        f"/api/v1.0/<end><br/>"
+        f"/api/v1.0/start<br/>"
+        f"/api/v1.0/start/end<br/>"
     )
 
 @app.route("/api/v1.0/precipitation")
@@ -49,7 +52,8 @@ def precipitation():
    
     prcp_scores = session.query(Measurement.date, Measurement.prcp).filter(Measurement.date >= last_twelve_months).all()
     session.close()
-    return jsonify(prcp_scores)
+    prcp_list = list(np.ravel(prcp_scores))
+    return jsonify(prcp_list)
 
 
 @app.route("/api/v1.0/stations")   
@@ -57,15 +61,41 @@ def stations():
     session = Session(engine)
     stations= session.query(Station.station,Station.name).all()
     session.close()
-    return jsonify(stations)
+    station_list = list(np.ravel(stations))
+    return jsonify(station_list)
 
 @app.route("/api/v1.0/tobs")     
 
-def stations():
+def tobs():
     session = Session(engine)
-    stations= session.query(Measurement.date,Station.tobs).filter(Measurement.station == active_station_id).filter(Measurement.date >= last_twelve_months).all()
+    tobs= session.query(Measurement.date,Measurement.tobs).filter(Measurement.station == active_station_id).filter(Measurement.date >= last_twelve_months).all()
     session.close()
-    return jsonify(stations)
+    tobs_list = list(np.ravel(tobs))
+    return jsonify(tobs_list)
+
+@app.route("/api/v1.0/<start>") 
+def tempstart(start):
+    format_date = dt.datetime.strptime(start, '%d-%m-%Y').date()
+    session = Session(engine)
+    start_query = session.query(Measurement.station, func.min(Measurement.tobs),func.max(Measurement.tobs),func.avg(Measurement.tobs)).filter(Measurement.date>= format_date).all()
+    session.close()
+    start_list = list(np.ravel(start_query))
+    return jsonify(start_list)
+
+@app.route("/api/v1.0/<start>/<end>") 
+def tempstartend(start,end):
+    format_start = dt.datetime.strptime(start, '%d-%m-%Y').date()
+    format_end = dt.datetime.strptime(end, '%d-%m-%Y').date()
+    session = Session(engine)
+    start_end_query = session.query(Measurement.station, func.min(Measurement.tobs),func.max(Measurement.tobs),func.avg(Measurement.tobs)).filter(Measurement.date>= format_start).filter(Measurement.date <= format_end).all()
+    session.close()
+    start_end_list = list(np.ravel(start_end_query))
+    return jsonify(start_end_list)
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
+
 
 
 
