@@ -1,23 +1,24 @@
 # sqlalchemy-challenge
-Introducitons
-This assignment is to do a climate analysis and data exploration using sqlalchemy, Pandas and Matplotlib. 
-Part 1 Precipitation Analysis and Station Analysis
-  Precipitation Analysis:
-  Design a query to find out the previous 12 months of data, select "date" and "prcp" values. Sort the data by 'date' and using matplotlib to show a image as below:
-   ![prcp](https://user-images.githubusercontent.com/109451707/194977987-1918d46c-5b9b-483e-9bf3-8888f93f26c7.png)
+#Introducitons
+#This assignment is to do a climate analysis and data exploration using sqlalchemy, Pandas and Matplotlib. 
+#Part 1 Precipitation Analysis and Station Analysis
+  ##Precipitation Analysis:
+  #Design a query to find out the previous 12 months of data, select "date" and "prcp" values. Sort the data by 'date' and using matplotlib to show a image as below:
+  
+  #![prcp](https://user-images.githubusercontent.com/109451707/194977987-1918d46c-5b9b-483e-9bf3-8888f93f26c7.png)
   
   
-  Station Analysis
+ # Station Analysis
 
-        a.A query was designed to calculate the total number of stations in the dataset and viewed the result by decending the order to  find the most active station Id.
-        b.find out the lowest, hignest and the average temperatures of th most active station
-        c. Designed a query to find out the previous 12 months temperature observations for the most active station.
-        Please see the image shown as below:
-        
+        #a.A query was designed to calculate the total number of stations in the dataset and viewed the result by decending the order to  find the most active station Id.
+       # b.find out the lowest, hignest and the average temperatures of th most active station
+        #c. Designed a query to find out the previous 12 months temperature observations for the most active station.
+       # Please see the image shown as below:
+        #![tob](https://user-images.githubusercontent.com/109451707/194978255-d93cb3b0-d31e-4a39-8516-d58ee6cfc9ee.png)
 
-Climate APP
+##Part 2 Climate APP
 
-After the completion of the initial analysis, a Flask API app was designed based on the queries. The following routes were created :
+#After the completion of the initial analysis, a Flask API app was designed based on the queries. The following routes were created :
 
 Routes
 /
@@ -40,5 +41,4 @@ Return a JSON list of temperature observations (TOBS) for the previous year.
 Returned a JSON list of the minimum temperature, the average temperature, and the max temperature for a given start or start-end range.
 When given the start only, calculated TMIN, TAVG, and TMAX for all dates greater than and equal to the start date.
 When given the start and the end date, calculated TMIN, TAVG, and TMAX for all dates greater than and equal to the start date.
-The following is the result :
-image.png
+
