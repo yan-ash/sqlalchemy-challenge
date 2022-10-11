@@ -1,14 +1,26 @@
 # sqlalchemy-challenge
-#Introducitons
-#This assignment is to do a climate analysis and data exploration using sqlalchemy, Pandas and Matplotlib. 
-#Part 1 Precipitation Analysis and Station Analysis
+##Introducitons
+
+##This assignment is to do a climate analysis and data exploration using sqlalchemy, Pandas and Matplotlib. 
+
+
+##Part 1 Precipitation Analysis and Station Analysis
+
   ##Precipitation Analysis:
+  
   #Design a query to find out the previous 12 months of data, select "date" and "prcp" values. Sort the data by 'date' and using matplotlib to show a image as below:
   
+  
   #![prcp](https://user-images.githubusercontent.com/109451707/194977987-1918d46c-5b9b-483e-9bf3-8888f93f26c7.png)
+# Station Analysis
+
+        #1.A query was designed to calculate the total number of stations in the dataset and viewed the result by decending the order to  find the most active station Id.
+       # 2.find out the lowest, hignest and the average temperatures of th most active station
+        #3. Designed a query to find out the previous 12 months temperature observations for the most active station.
+       # 4.Please see the image shown as below:
+        ![tob](https://user-images.githubusercontent.com/109451707/194978769-d0fbd6af-9d61-4e87-801c-39db53580517.png)
+
   
-  
- 
 ##Part 2 Climate APP
 
 #After the completion of the initial analysis, a Flask API app was designed based on the queries. The following routes were created :
