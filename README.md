@@ -12,15 +12,16 @@
   
   
   #![prcp](https://user-images.githubusercontent.com/109451707/194977987-1918d46c-5b9b-483e-9bf3-8888f93f26c7.png)
-# Station Analysis
 
-        #1.A query was designed to calculate the total number of stations in the dataset and viewed the result by decending the order to  find the most active station Id.
-       # 2.find out the lowest, hignest and the average temperatures of th most active station
-        #3. Designed a query to find out the previous 12 months temperature observations for the most active station.
-       # 4.Please see the image shown as below:
-        ![tob](https://user-images.githubusercontent.com/109451707/194978769-d0fbd6af-9d61-4e87-801c-39db53580517.png)
 
-  
+##Station Analysis
+1. A query was designed to calculate the total number of the stations in the dataset and viewed by descending order to find the most active station ID.
+2. find out the lowest, highest and the average temperatures of the most acitive station
+3. desgined a query to find out the temperature observations of the most active station for the previous 12 months. 
+Please see the image below:
+
+  ![tob](https://user-images.githubusercontent.com/109451707/194979242-391d034f-85e6-4d09-989c-f03bd5e11b40.png)
+
 ##Part 2 Climate APP
 
 #After the completion of the initial analysis, a Flask API app was designed based on the queries. The following routes were created :
