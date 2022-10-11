@@ -54,7 +54,8 @@ def precipitation():
     session.close()
     prcp_list = list(np.ravel(prcp_scores))
     return jsonify(prcp_list)
-
+ 
+# Create our session (link) from Python to the DB and create a route and  jsonify the station list
 
 @app.route("/api/v1.0/stations")   
 def stations():
@@ -64,6 +65,8 @@ def stations():
     station_list = list(np.ravel(stations))
     return jsonify(station_list)
 
+# Create our session (link) from Python to the DB and create a route and  jsonify the temperature observation list
+
 @app.route("/api/v1.0/tobs")     
 
 def tobs():
@@ -72,7 +75,8 @@ def tobs():
     session.close()
     tobs_list = list(np.ravel(tobs))
     return jsonify(tobs_list)
-
+# Create our session (link) from Python to the DB and create a route to get the tmin,tavg,tmax that greater than or equal to the start date
+#  and  jsonify the start date list
 @app.route("/api/v1.0/<start>") 
 def tempstart(start):
     format_date = dt.datetime.strptime(start, '%d-%m-%Y').date()
@@ -81,6 +85,9 @@ def tempstart(start):
     session.close()
     start_list = list(np.ravel(start_query))
     return jsonify(start_list)
+    
+# Create our session (link) from Python to the DB and create a route to get the tmin,tavg,tmax 
+# that for the dates from the start date to the end date
 
 @app.route("/api/v1.0/<start>/<end>") 
 def tempstartend(start,end):
