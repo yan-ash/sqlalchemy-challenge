@@ -4,7 +4,7 @@ This assignment is to do a climate analysis and data exploration using sqlalchem
 Part 1 Precipitation Analysis and Station Analysis
   Precipitation Analysis:
         Design a query to find out the previous 12 months of data, select "date" and "prcp" values. Sort the data by 'date' and using matplotlib to show a image as below:
-        image.png
+        ![prcp](https://user-images.githubusercontent.com/109451707/194977987-1918d46c-5b9b-483e-9bf3-8888f93f26c7.png)
   Station Analysis
 
         a.A query was designed to calculate the total number of stations in the dataset and viewed the result by decending the order to  find the most active station Id.
